@@ -226,13 +226,22 @@
     .subhead:first-of-type { margin-top: 18px; }
     .proj-list { border-top: 1px solid var(--border); }
     .proj-row {
-      display: flex; align-items: baseline; justify-content: space-between;
-      gap: 20px; padding: 18px 4px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start;
+      gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--border);
       transition: padding .25s var(--ease), background .25s var(--ease);
     }
     a.proj-row { cursor: pointer; }
     .proj-row:hover { background: var(--accent-soft); padding-left: 14px; padding-right: 14px; }
-    .proj-row .pinfo { min-width: 0; }
+    .proj-row .picon {
+      flex: 0 0 auto; width: 40px; height: 40px; border-radius: 10px;
+      display: grid; place-items: center; overflow: hidden;
+      background: var(--bg-soft); border: 1px solid var(--border); color: var(--accent);
+    }
+    .proj-row .picon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; background: #fff; }
+    .proj-row .picon--dark { background: #0e2f63; border-color: #0e2f63; }
+    .proj-row .picon--dark img { background: transparent; padding: 6px; }
+    .proj-row .picon svg { width: 21px; height: 21px; display: block; }
+    .proj-row .pinfo { flex: 1 1 auto; min-width: 0; }
     .proj-row h4 {
       font-size: 16.5px; font-weight: 600; display: flex; align-items: center; gap: 7px;
     }
@@ -488,6 +497,7 @@
         <h3 class="subhead reveal">Products &amp; Platforms</h3>
         <div class="proj-list reveal">
           <a class="proj-row" href="https://rsudramah.temanggungkab.go.id/" target="_blank" rel="noopener">
+            <span class="picon"><img src="assets/img/logos/rsud.png" alt="RSUD Temanggung logo"></span>
             <div class="pinfo">
               <h4>RSUD Temanggung — Online Registration <span class="arrow">↗</span></h4>
               <p>Patient self-service portal: online registration, doctor schedule, real-time queue, reservation, and BPJS verification — integrated with SIMRS.</p>
@@ -496,6 +506,7 @@
             <span class="meta">Healthcare · Web App</span>
           </a>
           <a class="proj-row" href="https://kebhumi.id/" target="_blank" rel="noopener">
+            <span class="picon"><img src="assets/img/logos/kebhumi.png" alt="Kebhumi.id logo"></span>
             <div class="pinfo">
               <h4>Kebhumi.id — Digital Services <span class="arrow">↗</span></h4>
               <p>Digital solutions platform for clinics, schools, and businesses — clinic systems, EMR, API integrations, and custom web apps.</p>
@@ -504,6 +515,7 @@
             <span class="meta">Web Platform</span>
           </a>
           <div class="proj-row">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></span>
             <div class="pinfo">
               <h4>SIMRS — Hospital Information System</h4>
               <p>Full Hospital Management Information System: registration, outpatient/inpatient, EMR, pharmacy, billing, and BPJS claim automation.</p>
@@ -515,6 +527,7 @@
         <h3 class="subhead reveal">System Integrations</h3>
         <div class="proj-list reveal">
           <div class="proj-row">
+            <span class="picon"><img src="assets/img/logos/satusehat.png" alt="SATUSEHAT logo"></span>
             <div class="pinfo">
               <h4>SATUSEHAT — Kemenkes Integration</h4>
               <p>Integrated SIMRS with the national SATUSEHAT platform (Kemenkes) for interoperable health data exchange via FHIR standards.</p>
@@ -522,6 +535,7 @@
             <span class="meta">FHIR · REST API</span>
           </div>
           <div class="proj-row">
+            <span class="picon"><img src="assets/img/logos/bpjs.svg" alt="BPJS Kesehatan logo"></span>
             <div class="pinfo">
               <h4>BPJS Bridging</h4>
               <p>Claim workflows, referral validation, and automation through BPJS VClaim and INA-CBGs bridging APIs.</p>
@@ -529,6 +543,7 @@
             <span class="meta">VClaim · INA-CBGs</span>
           </div>
           <div class="proj-row">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6L4.2 16.6A2 2 0 0 0 6 19.6h12a2 2 0 0 0 1.8-3L15 8V2"/><path d="M8.5 2h7"/><path d="M7 15h10"/></svg></span>
             <div class="pinfo">
               <h4>Laboratory Information System (LIS)</h4>
               <p>Two-way integration with the lab management system: electronic test orders and automated result delivery into the EMR.</p>
@@ -536,6 +551,7 @@
             <span class="meta">LIS · HL7</span>
           </div>
           <div class="proj-row">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></span>
             <div class="pinfo">
               <h4>Radiology Integration (RIS/PACS)</h4>
               <p>Connected radiology workflows — order requests, modality worklist, and imaging results linked to patient records.</p>
@@ -543,6 +559,7 @@
             <span class="meta">RIS · PACS</span>
           </div>
           <div class="proj-row">
+            <span class="picon picon--dark"><img src="assets/img/logos/bankjateng.png" alt="Bank Jateng logo"></span>
             <div class="pinfo">
               <h4>Host-to-Host — Bank Jateng</h4>
               <p>Real-time host-to-host payment integration with Bank Jateng for billing reconciliation and patient payment processing.</p>
@@ -550,6 +567,7 @@
             <span class="meta">Host-to-Host · Payment</span>
           </div>
           <div class="proj-row">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></span>
             <div class="pinfo">
               <h4>WhatsApp API — Notifications</h4>
               <p>Automated patient notifications and reminders (registration, queue, schedules) via WhatsApp Business API.</p>
