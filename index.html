@@ -258,6 +258,26 @@
       color: var(--accent); white-space: nowrap; padding-top: 2px;
     }
 
+    /* Clients */
+    .client-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+    .client {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 16px; display: flex; gap: 13px; align-items: flex-start;
+      transition: border-color .25s var(--ease), transform .25s var(--ease);
+    }
+    .client:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .client .cicon {
+      flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px;
+      display: grid; place-items: center; background: var(--accent-soft); color: var(--accent);
+    }
+    .client .cicon svg { width: 20px; height: 20px; display: block; }
+    .client .cicon img { width: 100%; height: 100%; object-fit: contain; padding: 4px; background: #fff; border-radius: 9px; }
+    .client .cbody { min-width: 0; }
+    .client h4 { font-size: 14.5px; font-weight: 600; line-height: 1.35; }
+    .client .ctype { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 6px; }
+    .client .cloc { font-size: 12.5px; color: var(--muted); margin-top: 3px; display: flex; align-items: center; gap: 4px; }
+    .client .cloc svg { width: 12px; height: 12px; flex: 0 0 auto; }
+
     /* Contact */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 12px; }
     .contact-info p { color: var(--muted); font-size: 15px; }
@@ -289,6 +309,9 @@
     .reveal.in { opacity: 1; transform: none; }
 
     /* Responsive */
+    @media (max-width: 940px) {
+      .client-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 720px) {
       .nav-links {
         position: fixed; inset: 64px 0 auto 0;
@@ -301,7 +324,9 @@
       .nav-toggle { display: block; }
       .info-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+      .client-grid { grid-template-columns: 1fr; }
       .proj-row { flex-direction: column; gap: 6px; }
+      .proj-row .picon { order: -2; }
       .proj-row .meta { order: -1; }
       .form-row { grid-template-columns: 1fr; }
       .hero { padding: 64px 0 48px; }
@@ -334,6 +359,7 @@
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
         <a href="#work">Work</a>
+        <a href="#clients">Clients</a>
         <a href="#contact">Contact</a>
       </nav>
       <div style="display:flex; align-items:center; gap:12px;">
@@ -578,10 +604,76 @@
       </div>
     </section>
 
+    <!-- ===== Clients ===== -->
+    <section class="block" id="clients">
+      <div class="wrap">
+        <p class="eyebrow reveal">04 — Clients</p>
+        <h2 class="title reveal">Trusted by</h2>
+        <p class="lead reveal">Clinics, private practices, pharmacies, and institutions running systems I've built and maintain.</p>
+
+        <!-- icon sprite -->
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+          <symbol id="ic-doctor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13a6 6 0 0 0 6 6 3 3 0 0 0 3-3v-1.5"/><circle cx="19" cy="13" r="2"/></symbol>
+          <symbol id="ic-clinic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M12 7v6M9 10h6"/></symbol>
+          <symbol id="ic-pharmacy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 1 1 7-7l7 7a4.95 4.95 0 1 1-7 7z"/><path d="m8.5 8.5 7 7"/></symbol>
+          <symbol id="ic-physio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+          <symbol id="ic-edu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 2.5 6 2.5s6-1 6-2.5v-5"/></symbol>
+          <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+        </svg>
+
+        <div class="client-grid">
+          <div class="client reveal">
+            <span class="cicon"><svg><use href="#ic-clinic"/></svg></span>
+            <div class="cbody"><h4>Klinik Madani</h4><div class="ctype">Klinik</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kota Semarang</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><img src="assets/img/logos/idi.jpg" alt="Ikatan Dokter Indonesia logo"></span>
+            <div class="cbody"><h4>dr. Ratna Diah Kurniawati</h4><div class="ctype">Praktik Mandiri Dokter</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kab. Temanggung</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><img src="assets/img/logos/idi.jpg" alt="Ikatan Dokter Indonesia logo"></span>
+            <div class="cbody"><h4>dr. Rita Sugiono Tanamal, Sp.DVE</h4><div class="ctype">Praktik Mandiri Dokter Spesialis</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kota Ambon</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><svg><use href="#ic-edu"/></svg></span>
+            <div class="cbody"><h4>Semesta Bilingual Boarding School</h4><div class="ctype">Institusi Pendidikan</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kota Semarang</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><img src="assets/img/logos/idi.jpg" alt="Ikatan Dokter Indonesia logo"></span>
+            <div class="cbody"><h4>dr. Nida Cika Oktarina</h4><div class="ctype">Praktik Mandiri Dokter</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kab. Temanggung</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><img src="assets/img/logos/idi.jpg" alt="Ikatan Dokter Indonesia logo"></span>
+            <div class="cbody"><h4>dr. Muslikha Triastuti</h4><div class="ctype">Praktik Mandiri Dokter</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kota Semarang</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><svg><use href="#ic-physio"/></svg></span>
+            <div class="cbody"><h4>Fisioterapi Ghita</h4><div class="ctype">Praktik Mandiri Fisioterapi</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kota Singkawang</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><svg><use href="#ic-pharmacy"/></svg></span>
+            <div class="cbody"><h4>Apotek Keluarga</h4><div class="ctype">Apotek</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kab. Temanggung</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><img src="assets/img/logos/idi.jpg" alt="Ikatan Dokter Indonesia logo"></span>
+            <div class="cbody"><h4>dr. Cahyadi</h4><div class="ctype">Praktik Mandiri Dokter</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kab. Temanggung</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><svg><use href="#ic-clinic"/></svg></span>
+            <div class="cbody"><h4>Klinik Utama Markas Sehat</h4><div class="ctype">Klinik Utama</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Jakarta Selatan</div></div>
+          </div>
+          <div class="client reveal">
+            <span class="cicon"><img src="assets/img/logos/idi.jpg" alt="Ikatan Dokter Indonesia logo"></span>
+            <div class="cbody"><h4>dr. Novi Andriyani</h4><div class="ctype">Praktik Mandiri Dokter</div><div class="cloc"><svg><use href="#ic-pin"/></svg>Kab. Temanggung</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Contact ===== -->
     <section class="block" id="contact">
       <div class="wrap">
-        <p class="eyebrow reveal">04 — Contact</p>
+        <p class="eyebrow reveal">05 — Contact</p>
         <h2 class="title reveal">Let's work together</h2>
         <p class="lead reveal">Have a project in mind or just want to say hi? My inbox is always open.</p>
 
